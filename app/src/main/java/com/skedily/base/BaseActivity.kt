@@ -25,7 +25,7 @@ abstract class BaseActivity(
         setContentView(layoutId)
     }
 
-    fun Fragment.replaceAndCommit(@IdRes containerId: Int, addToBackStack: Boolean = false, backStackTag: String? = null) {
+    fun Fragment.replaceAndCommit(@IdRes containerId: Int, addToBackStack: Boolean = false) {
         var transaction = supportFragmentManager.beginTransaction()
                 .replace(containerId, this)
 
