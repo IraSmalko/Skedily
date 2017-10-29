@@ -35,15 +35,15 @@
             class="android.widget.TextView"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_marginTop="4dp"
             android:layout_marginBottom="12dp"
             android:layout_marginLeft="40dp"
-            android:foreground="#2196F3"
+            android:layout_marginTop="4dp"
+            android:foreground="@color/soonTask"
             android:visibility='@{item.isSoon ? View.VISIBLE : View.GONE}' />
 
         <TextView
-            android:id="@+id/currentData"
-            android:layout_width="wrap_content"
+            android:id="@+id/currentDate"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/circle"
@@ -51,7 +51,7 @@
             android:maxLines="2"
             android:paddingRight="8dp"
             android:text='@{item.startTime.toString("dd") + "\n" +item.startTime.toString("EEE")}'
-            android:textColor="#000"
+            android:textColor='@{item.isSoon ? @color/soonTask : @color/dateBlack}'
             android:textSize="24sp"
             android:visibility='@{item.firstOfDay ? View.VISIBLE : View.INVISIBLE}'
             tools:text="18 \n Tue" />
@@ -60,13 +60,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/view"
-            android:layout_toEndOf="@+id/currentData"
+            android:layout_toEndOf="@+id/currentDate"
             cardview:cardCornerRadius="5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/currentData"
+                android:layout_toEndOf="@+id/currentDate"
                 android:background='@{item.user.color}'
                 android:padding="8dp"
                 tools:background="#42A5F5">

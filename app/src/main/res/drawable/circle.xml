@@ -5,7 +5,7 @@
     android:thickness="5dp"
     android:useLevel="false">
 
-    <solid android:color="#2196F3" />
+    <solid android:color="@color/soonTask" />
 
 
 </shape>
