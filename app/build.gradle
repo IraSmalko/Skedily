@@ -30,6 +30,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
+    implementation 'com.google.firebase:firebase-database:11.6.0'
+    implementation 'com.google.firebase:firebase-auth:11.6.0'
+    implementation 'com.google.android.gms:play-services-auth:11.6.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -84,3 +87,4 @@ dependencies {
 kapt {
     generateStubs = true
 }
+apply plugin: 'com.google.gms.google-services'
