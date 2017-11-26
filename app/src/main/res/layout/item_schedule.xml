@@ -86,7 +86,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:text='@{item.name}'
-                        android:textColor="#FFF"
+                        android:textColor="@color/white"
                         android:textSize="16sp"
                         tools:text="Name of name and name" />
 
@@ -94,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text='@{item.startTime.toString("HH:mm") + " - "  + item.endTime.toString("HH:mm")}'
-                        android:textColor="#FFF"
+                        android:textColor="@color/white"
                         tools:text="7 - 8" />
 
                     <TextView
@@ -105,7 +105,7 @@
                         android:drawablePadding="4dp"
                         android:onClick="@{() -> vm.onClickLocation(item.address)}"
                         android:text='@{item.address.locality}'
-                        android:textColor="#FFF"
+                        android:textColor="@color/white"
                         android:visibility='@{item.address != null ? View.VISIBLE : View.GONE}'
                         tools:text="location" />
                 </LinearLayout>
