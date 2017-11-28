@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.skedily.screens.authentication.LoggedInViewModel" />
+    </data>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="Sign In"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/signButton"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Log Out!"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:onClick='@{() -> vm.signOut()}'
+                android:focusable="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40dp"/>
+
+        </RelativeLayout>
+</layout>
