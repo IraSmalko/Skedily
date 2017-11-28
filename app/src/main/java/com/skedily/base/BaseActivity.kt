@@ -2,6 +2,7 @@ package com.skedily.base
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -11,6 +12,8 @@ import android.support.v4.app.Fragment
 import com.skedily.BR
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import io.reactivex.Maybe
+import io.reactivex.subjects.PublishSubject
 import kotlin.reflect.KClass
 
 abstract class BaseActivity(
@@ -20,6 +23,7 @@ abstract class BaseActivity(
         super.onCreate(savedInstanceState)
         layoutId?.let { setContentLayout(it) }
     }
+    private val activityResults = PublishSubject.create<ActivityResult>()
 
     protected open fun setContentLayout(@LayoutRes layoutId: Int) {
         setContentView(layoutId)
@@ -37,7 +41,16 @@ abstract class BaseActivity(
         else
             transaction.commitNow()
     }
+
+    final override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        activityResults.onNext(ActivityResult(requestCode, resultCode, data))
+    }
+
+    protected fun awaitActivityResult(requestCode: Int): Maybe<ActivityResult> = activityResults.filter { it.requestCode == requestCode }.firstElement()
 }
+
+data class ActivityResult(val requestCode: Int, val resultCode: Int, val data: Intent?)
 
 abstract class BaseBoundActivity<out TBinding : ViewDataBinding>(
         layoutId: Int,

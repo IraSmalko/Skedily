@@ -12,14 +12,19 @@ class LoggedInViewModel : BaseViewModel() {
 
     fun init(interactor: LoggedInInteractor, signIn: SignInButton) {
         this.interactor = interactor
+
         signIn.setOnClickListener({ _ -> signIn() })
     }
 
-    fun signIn() {
-        interactor!!.singIn()
+    private fun signIn() {
+        interactor?.singIn()
     }
 
     fun signOut() {
-        interactor!!.signOut()
+        interactor?.signOut()
     }
+
+    fun successfulLogIn() =  interactor?.successfulLogIn()
+
+    fun failedLogIn() =  interactor?.failedLogIn()
 }
