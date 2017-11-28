@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Skedily</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="schedule">Schedule</string>
+    <string name="family">Family</string>
+    <string name="authentication_failed">Authentication failed.</string>
+    <string name="lgging_out">Logging Out...</string>
+    <string name="action">Action</string>
 </resources>

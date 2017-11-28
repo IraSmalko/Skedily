@@ -1,6 +1,5 @@
 package com.skedily.screens.family
 
-import android.databinding.ObservableField
 import android.support.v7.widget.RecyclerView
 
 import com.github.nitrico.lastadapter.LastAdapter
