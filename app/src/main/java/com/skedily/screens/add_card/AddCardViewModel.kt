@@ -7,4 +7,27 @@ import com.skedily.base.BaseViewModel
  */
 class AddCardViewModel : BaseViewModel() {
 
+    fun addNote() {
+
+    }
+
+    fun addChecklist() {
+
+    }
+
+    fun setDay() {
+
+    }
+
+    fun addLocation() {
+
+    }
+
+    fun addFile() {
+
+    }
+
+    fun addPerson() {
+
+    }
 }

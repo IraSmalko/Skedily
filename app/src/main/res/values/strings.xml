@@ -8,4 +8,6 @@
     <string name="action">Action</string>
     <string name="add_note">Add note</string>
     <string name="add_checklist">Add checklist</string>
+    <string name="save">save</string>
+    <string name="category">Category</string>
 </resources>

@@ -16,7 +16,7 @@ class LoggedInViewModel : BaseViewModel() {
         signIn.setOnClickListener({ _ -> signIn() })
     }
 
-    private fun signIn() {
+    fun signIn() {
         interactor?.singIn()
     }
 
@@ -24,7 +24,7 @@ class LoggedInViewModel : BaseViewModel() {
         interactor?.signOut()
     }
 
-    fun successfulLogIn() =  interactor?.successfulLogIn()
+    fun successfulLogIn() = interactor?.successfulLogIn()
 
-    fun failedLogIn() =  interactor?.failedLogIn()
+    fun failedLogIn() = interactor?.failedLogIn()
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,37 +15,76 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/grey">
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="4dp"
+                app:setSpinnerAdapter='@{true}' />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@+id/spinner"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="42dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey"
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="24dp"
+                android:onClick='@{() -> vm.addNote()}'
+                android:padding="4dp"
                 android:text="@string/add_note"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/black" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_checklist"
+                tools:layout_height="200dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:onClick='@{() -> vm.addChecklist()}'
+                android:orientation="horizontal"
+                android:padding="4dp">
+
 
                 <ImageView
-                    android:layout_width="24dp"
+                    android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="center_vertical"
-                    android:onClick='@{vm.onClickDashboard}'
                     android:tint="@color/colorPrimary"
                     app:srcCompat="@drawable/ic_plus" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/add_checklist"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
 
@@ -52,8 +92,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
+            android:layout_above="@+id/btn_save"
+            android:background="@color/grey"
             android:orientation="horizontal"
             android:paddingBottom="8dp"
             android:paddingTop="16dp"
@@ -68,8 +108,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
-                android:onClick='@{vm.onClickDashboard}'
-                app:srcCompat="@drawable/ic_dashboard" />
+                android:onClick='@{() -> vm.setDay()}'
+                app:srcCompat="@drawable/ic_set_day_on_calendar" />
 
             <ImageView
                 android:layout_width="24dp"
@@ -78,19 +118,9 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
-                android:onClick='@{vm.onClickDashboard}'
-                app:srcCompat="@drawable/ic_dashboard" />
-
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:onClick='@{onClickSchedule}'
-                app:srcCompat="@drawable/ic_schedule" />
+                android:onClick='@{() -> vm.addLocation()}'
+                android:tint="@color/darkGreey"
+                app:srcCompat="@drawable/ic_location" />
 
 
             <ImageView
@@ -100,10 +130,31 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
-                android:onClick='@{onClickFamily}'
-                app:srcCompat="@drawable/ic_family" />
+                android:onClick='@{() -> vm.addFile()}'
+                app:srcCompat="@drawable/ic_add_file" />
+
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:onClick='@{() -> vm.addPerson()}'
+                app:srcCompat="@drawable/ic_add_person" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:shadowColor="@color/white"
+            android:text="@string/save"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 </layout>

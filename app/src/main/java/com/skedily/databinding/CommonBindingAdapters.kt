@@ -1,18 +1,17 @@
 package com.skedily.databinding
 
+
 import android.databinding.BindingAdapter
-import android.net.Uri
-import android.support.design.widget.BottomSheetBehavior
 import android.support.v4.content.ContextCompat
-import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-
-
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
+import com.google.android.gms.common.SignInButton
 import com.skedily.R
-import jp.wasabeef.glide.transformations.BlurTransformation
+
 
 @BindingAdapter("loadCircleIcon")
 fun loadCircleIcon(imageView: ImageView, iconId: String) {
@@ -23,8 +22,9 @@ fun loadCircleIcon(imageView: ImageView, iconId: String) {
     }
 }
 
-@BindingAdapter("bottomSheetCallback")
-fun setBottomSheetCallback(view: View, callback: BottomSheetBehavior.BottomSheetCallback?) {
-    val behavior = BottomSheetBehavior.from(view)
-    behavior.setBottomSheetCallback(callback)
+@BindingAdapter("setSpinnerAdapter")
+fun setSpinnerAdapter(spinner: Spinner, available: Boolean) {
+    val adapter = ArrayAdapter.createFromResource(spinner.context, R.array.planets_array, android.R.layout.simple_spinner_item)
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    spinner.adapter = adapter
 }
