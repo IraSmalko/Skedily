@@ -30,15 +30,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
-    implementation 'com.google.firebase:firebase-database:11.6.0'
-    implementation 'com.google.firebase:firebase-auth:11.6.0'
-    implementation 'com.google.android.gms:play-services-auth:11.6.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    // Support lib
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation "com.android.support:recyclerview-v7:$support_version"
     implementation "com.android.support:cardview-v7:$support_version"
@@ -66,12 +62,7 @@ dependencies {
 
     // Data binding dependencies
     kapt "com.android.databinding:compiler:$android_plugin_version"
-    implementation 'com.github.nitrico.lastadapter:lastadapter:2.2.2'
-
-    // Networking
-    //    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation 'com.github.nitrico.lastadapter:lastadapter:2.3.0'
 
     // Parcelable generator
     implementation "nz.bradcampbell:paperparcel:$paperparcel_version"
@@ -82,6 +73,10 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     implementation 'jp.wasabeef:glide-transformations:3.0.1'
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation "com.google.firebase:firebase-database:$firebase_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_version"
+    implementation 'com.google.android.gms:play-services-auth:11.6.0'
 }
 
 kapt {
