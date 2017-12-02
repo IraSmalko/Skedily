@@ -51,7 +51,7 @@
             android:maxLines="2"
             android:paddingRight="8dp"
             android:text='@{item.startTime.toString("dd") + "\n" +item.startTime.toString("EEE")}'
-            android:textColor='@{item.isSoon ? @color/soonTask : @color/dateBlack}'
+            android:textColor='@{item.isSoon ? @color/soonTask : @color/black}'
             android:textSize="24sp"
             android:visibility='@{item.firstOfDay ? View.VISIBLE : View.INVISIBLE}'
             tools:text="18 \n Tue" />

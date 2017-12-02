@@ -3,13 +3,15 @@ package com.skedily.databinding
 
 import android.databinding.BindingAdapter
 import android.support.v4.content.ContextCompat
+import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
-import com.google.android.gms.common.SignInButton
 import com.skedily.R
 
 
@@ -27,4 +29,22 @@ fun setSpinnerAdapter(spinner: Spinner, available: Boolean) {
     val adapter = ArrayAdapter.createFromResource(spinner.context, R.array.planets_array, android.R.layout.simple_spinner_item)
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
     spinner.adapter = adapter
+}
+
+@BindingAdapter("setItemSelectedListener")
+fun setItemSelectedListener(spinner: Spinner, function: Function) {
+    spinner.onItemSelectedListener = object : OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            function.invoke(selectedItem)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>) {
+
+        }
+    }
+}
+
+interface Function {
+    fun invoke(s: String)
 }

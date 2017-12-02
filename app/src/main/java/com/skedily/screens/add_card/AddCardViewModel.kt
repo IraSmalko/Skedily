@@ -1,5 +1,7 @@
 package com.skedily.screens.add_card
 
+import android.databinding.Bindable
+import com.skedily.BR
 import com.skedily.base.BaseViewModel
 
 /**
@@ -7,8 +9,14 @@ import com.skedily.base.BaseViewModel
  */
 class AddCardViewModel : BaseViewModel() {
 
-    fun addNote() {
+    var note: String = ""
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.note)
+        }
 
+    fun getCategory(item: String) {
     }
 
     fun addChecklist() {

@@ -28,6 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:padding="4dp"
+                android:prompt="@string/category"
+                app:setItemSelectedListener='@{(s) -> vm.getCategory(s)}'
                 app:setSpinnerAdapter='@{true}' />
         </LinearLayout>
 
@@ -43,23 +45,25 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="24dp"
-                android:onClick='@{() -> vm.addNote()}'
+                android:hint="@string/add_note"
                 android:padding="4dp"
-                android:text="@string/add_note"
-                android:textColor="@color/black" />
+                android:text='@={vm.note}'
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="16sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_checklist"
-                tools:layout_height="200dp"/>
+                tools:layout_height="200dp"
+                tools:listitem="@layout/item_checklist" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
