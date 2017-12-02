@@ -5,6 +5,7 @@ import android.databinding.ObservableArrayList
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
+import com.google.android.gms.location.places.Place
 import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
@@ -33,6 +34,13 @@ class AddCardViewModel : BaseViewModel() {
         set(value) {
             field = value
             notifyPropertyChanged(BR.positionToScroll)
+        }
+
+    var pickedPlace: Place? = null
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.pickedPlace)
         }
 
     fun init(interactor: AddCardInteractor) {
@@ -64,7 +72,7 @@ class AddCardViewModel : BaseViewModel() {
     }
 
     fun addLocation() {
-        interactor?.pickPlace()
+        interactor?.let { it.pickPlace().subscribe { pickedPlace = it } }
     }
 
     fun addFile() {
