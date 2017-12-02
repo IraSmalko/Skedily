@@ -32,16 +32,15 @@ class MapActivity : BaseBoundVmActivity<ActivityMapBinding, MapViewModel>(
         mapView.onCreate(savedInstanceState)
         RxPermissions(this)
                 .request(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION)
-                .subscribe({ granted ->
-                    if (granted) {
-                        mapView.getMapAsync({ map ->
-                            googleMap = map
-                            if (!googleMap?.isMyLocationEnabled!!) {
-                                googleMap?.isMyLocationEnabled = true
-                                buildGoogleApiClient()
-                            }
-                        })
-                    }
+                .filter { it }
+                .subscribe({ _ ->
+                    mapView.getMapAsync({ map ->
+                        googleMap = map
+                        if (!googleMap?.isMyLocationEnabled!!) {
+                            googleMap?.isMyLocationEnabled = true
+                            buildGoogleApiClient()
+                        }
+                    })
                 })
     }
 

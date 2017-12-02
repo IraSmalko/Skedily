@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".screens.map.MapActivity"
+            android:name=".screens.add_card.AddCardActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,8 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_android_map_api_key" />
+            android:value="@string/google_place_api_key" />
+
     </application>
 
 </manifest>
