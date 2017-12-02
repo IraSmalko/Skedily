@@ -1,8 +1,11 @@
 package com.skedily.model
 
+import android.databinding.BaseObservable
+
 /**
  * Created by smalk on 12/1/2017.
  */
-data class ChecklistItem(val id: Int,
-                         val name: String,
-                         val state: Boolean)
+class ChecklistItem(var name: String,
+                    var state: Boolean) : BaseObservable() {
+
+}

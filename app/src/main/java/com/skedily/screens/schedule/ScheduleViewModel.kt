@@ -1,10 +1,8 @@
 package com.skedily.screens.schedule
 
-import android.databinding.Bindable
+import android.databinding.ObservableArrayList
 import android.location.Address
-import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
 import com.skedily.BR
@@ -16,8 +14,11 @@ import com.skedily.utils.weak
 
 class ScheduleViewModel : BaseViewModel() {
     var interactor by weak<SheduleInteractor>()
-    var taskItems = mutableListOf<Task>()
+    val taskItems = ObservableArrayList<Task>()
 
+    fun init(list: List<Task>) {
+        this.taskItems.addAll(list)
+    }
 
     fun initRecycler(recycler: RecyclerView) {
         taskItems.sortBy { it.startTime }

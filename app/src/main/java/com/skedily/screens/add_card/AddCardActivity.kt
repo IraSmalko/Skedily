@@ -1,10 +1,10 @@
 package com.skedily.screens.add_card
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import com.skedily.R
 import com.skedily.base.BaseBoundVmActivity
 import com.skedily.databinding.ActivityAddCardBinding
+import kotlinx.android.synthetic.main.activity_add_card.*
 
 /**
  * Created by smalk on 11/29/2017.
@@ -12,8 +12,8 @@ import com.skedily.databinding.ActivityAddCardBinding
 class AddCardActivity : BaseBoundVmActivity<ActivityAddCardBinding, AddCardViewModel>(
         R.layout.activity_add_card, AddCardViewModel::class), AddCardInteractor {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        vm
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        vm.initRecycler(recycler)
     }
 }
