@@ -21,9 +21,7 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
+    dataBinding.enabled true
 }
 
 dependencies {
@@ -59,6 +57,7 @@ dependencies {
     implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:$rxlifecycle_version"
     implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle_version"
     implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$rxlifecycle_version"
+    implementation'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
     // Data binding dependencies
     kapt "com.android.databinding:compiler:$android_plugin_version"
@@ -82,7 +81,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:$playServicesVersion"
     implementation "com.google.android.gms:play-services-places:$playServicesVersion"
 
-    implementation'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    implementation 'com.github.drawers:SpinnerDatePicker:1.0.2'
 }
 
 kapt {

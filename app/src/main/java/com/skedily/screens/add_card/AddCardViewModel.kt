@@ -11,7 +11,9 @@ import com.skedily.R
 import com.skedily.base.BaseViewModel
 import com.skedily.databinding.ItemChecklistBinding
 import com.skedily.model.ChecklistItem
+import com.skedily.model.User
 import com.skedily.utils.weak
+import org.joda.time.DateTime
 
 /**
  * Created by smalk on 11/29/2017.
@@ -20,6 +22,7 @@ class AddCardViewModel : BaseViewModel() {
     var interactor by weak<AddCardInteractor>()
 
     private val checklistItems = ObservableArrayList<ChecklistItem>()
+    private val listPerson = mutableListOf<User>()
     private lateinit var lastAdapter: LastAdapter
 
     var note: String = ""
@@ -68,7 +71,7 @@ class AddCardViewModel : BaseViewModel() {
     }
 
     fun setDay() {
-
+        interactor?.setDay(DateTime.now())
     }
 
     fun addLocation() {
@@ -80,6 +83,6 @@ class AddCardViewModel : BaseViewModel() {
     }
 
     fun addPerson() {
-
+        interactor?.let { listPerson.add(it.addPerson()) }
     }
 }

@@ -7,12 +7,12 @@ buildscript {
         architecture_components_version = '1.0.0'
         support_version = '27.0.2'
 
-        playServicesVersion = '11.6.0'
+        playServicesVersion = '11.6.2'
 
         rxandroid_version = '2.0.1'
         rxjava_version = '2.1.5'
         rxkotlin_version = '2.1.0'
-        rxlifecycle_version = '2.2.0'
+        rxlifecycle_version = '2.2.1'
 
         retrofit_version = '2.2.0'
 
@@ -24,7 +24,7 @@ buildscript {
 
         paperparcel_version = '2.0.4'
 
-        firebase_version = '11.6.0'
+        firebase_version = '11.6.2'
 
         sdkVersion = 26
         bToolsVersion = "26.0.2"
@@ -35,7 +35,9 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        maven { url 'https://maven.google.com' }
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -49,6 +51,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
