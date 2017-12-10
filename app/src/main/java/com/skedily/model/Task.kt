@@ -13,7 +13,7 @@ data class Task(
         val startTime: DateTime,
         val endTime: DateTime,
         val listPerson: List<User>,
-        val checklist: List<ChecklistItem>
+        val checklist: ArrayList<ChecklistItem>
 ) : PaperParcelable {
     companion object {
         @JvmField

@@ -49,6 +49,7 @@ class AddCardViewModel : BaseViewModel() {
         }
 
     var startDay = DateTime()
+    var endDay = DateTime()
 
     fun init(interactor: AddCardInteractor) {
         this.interactor = interactor

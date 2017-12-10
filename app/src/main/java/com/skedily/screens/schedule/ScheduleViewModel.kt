@@ -4,6 +4,7 @@ import android.databinding.ObservableArrayList
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
+import com.google.android.gms.maps.model.LatLng
 import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
@@ -36,7 +37,7 @@ class ScheduleViewModel : BaseViewModel() {
         interactor!!.onClick()
     }
 
-    fun onClickLocation(address: Address) {
+    fun onClickLocation(address: LatLng) {
         interactor!!.onClick()
     }
 }
