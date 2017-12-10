@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
 import com.google.android.gms.location.places.Place
+import com.google.firebase.database.FirebaseDatabase
 import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
 import com.skedily.databinding.ItemChecklistBinding
 import com.skedily.model.ChecklistItem
+import com.skedily.model.Task
 import com.skedily.model.User
 import com.skedily.utils.weak
 import org.joda.time.DateTime
@@ -45,6 +47,8 @@ class AddCardViewModel : BaseViewModel() {
             field = value
             notifyPropertyChanged(BR.pickedPlace)
         }
+
+    var startDay = DateTime()
 
     fun init(interactor: AddCardInteractor) {
         this.interactor = interactor
@@ -84,5 +88,10 @@ class AddCardViewModel : BaseViewModel() {
 
     fun addPerson() {
         interactor?.let { listPerson.add(it.addPerson()) }
+    }
+
+    fun clickSave() {
+        FirebaseDatabase.getInstance().reference.setValue(Task(1, note,
+                pickedPlace?.latLng, startDay, startDay, listPerson, checklistItems))
     }
 }

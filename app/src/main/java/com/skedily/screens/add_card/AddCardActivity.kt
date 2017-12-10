@@ -46,7 +46,7 @@ class AddCardActivity : BaseBoundVmActivity<ActivityAddCardBinding, AddCardViewM
     override fun setDay(today: DateTime) {
         SpinnerDatePickerDialogBuilder()
                 .context(this)
-                .callback({ _, y, m, d ->  })
+                .callback({ _, y, m, d ->  vm.startDay = DateTime(y, m, d, 0, 0)})
                 .spinnerTheme(R.style.NumberPickerStyle)
                 .defaultDate(today.year, today.monthOfYear - 1, today.dayOfMonth)
                 .build()

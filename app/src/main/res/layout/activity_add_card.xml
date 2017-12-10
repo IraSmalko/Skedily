@@ -192,6 +192,7 @@
             android:background="@color/colorPrimary"
             android:shadowColor="@color/white"
             android:text="@string/save"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:onClick='@{() -> vm.clickSave()}'/>
     </RelativeLayout>
 </layout>

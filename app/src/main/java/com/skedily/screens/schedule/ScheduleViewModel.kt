@@ -1,7 +1,6 @@
 package com.skedily.screens.schedule
 
 import android.databinding.ObservableArrayList
-import android.location.Address
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
@@ -22,8 +21,6 @@ class ScheduleViewModel : BaseViewModel() {
 
     fun initRecycler(recycler: RecyclerView) {
         taskItems.sortBy { it.startTime }
-        isSoon()
-        isFirstOfDay()
         LastAdapter(taskItems, BR.item)
                 .type { _, _ ->
                     Type<ItemScheduleBinding>(R.layout.item_schedule)
@@ -34,23 +31,6 @@ class ScheduleViewModel : BaseViewModel() {
                 .into(recycler)
     }
 
-    private fun isFirstOfDay() {
-        taskItems.forEach {
-            if (taskItems.size > taskItems.indexOf(it) + 1 && it.startTime.dayOfMonth
-                    == taskItems[taskItems.indexOf(it) + 1].startTime.dayOfMonth) {
-                taskItems[taskItems.indexOf(it) + 1].firstOfDay = false
-            }
-        }
-    }
-
-    private fun isSoon() {
-        taskItems.forEach {
-            if (it.startTime.isAfterNow) {
-                it.isSoon = true
-                return
-            }
-        }
-    }
 
     fun onClick() {
         interactor!!.onClick()
