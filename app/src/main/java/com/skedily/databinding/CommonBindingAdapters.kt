@@ -1,10 +1,13 @@
 package com.skedily.databinding
 
 
+import android.content.res.Resources
 import android.databinding.BindingAdapter
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import com.bumptech.glide.Glide
@@ -14,11 +17,11 @@ import com.skedily.R
 
 
 @BindingAdapter("loadCircleIcon")
-fun loadCircleIcon(imageView: ImageView, iconId: String) {
-    if (iconId.isEmpty()) {
+fun loadCircleIcon(imageView: ImageView, iconUrl: String) {
+    if (iconUrl.isEmpty()) {
         imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, R.drawable.ic_family))
     } else {
-        Glide.with(imageView.context).load(iconId).apply(bitmapTransform(CircleCrop())).into(imageView)
+        Glide.with(imageView.context).load(iconUrl).apply(bitmapTransform(CircleCrop())).into(imageView)
     }
 }
 
@@ -46,6 +49,18 @@ fun setItemSelectedListener(spinner: Spinner, function: Function) {
 @BindingAdapter("scrollTo")
 fun scrollTo(recycler: RecyclerView, position: Int) {
     recycler.layoutManager.scrollToPosition(position)
+}
+
+@BindingAdapter("scrollTop")
+fun scrollTop(recycler: RecyclerView, position: Int) {
+    val lm = recycler.layoutManager as? LinearLayoutManager
+    lm?.scrollToPositionWithOffset(position, 0)
+}
+
+@BindingAdapter("setHeight")
+fun setHeight(layout: ViewGroup, height: Int) {
+    layout.layoutParams.height = height
+
 }
 
 interface Function {

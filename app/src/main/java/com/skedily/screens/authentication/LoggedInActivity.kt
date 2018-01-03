@@ -58,13 +58,13 @@ class LoggedInActivity : BaseBoundVmActivity<ActivityLoggedInBinding, LoggedInVi
     }
 
     override fun signOut() {
-        showMessage()
+     //   showMessage()
         fbAuth.signOut()
     }
 
-    private fun showMessage() {
-        Snackbar.make(view, getString(R.string.lgging_out), Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.action), null).show()
-    }
+//    private fun showMessage() {
+//        Snackbar.make(view, getString(R.string.lgging_out), Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.action), null).show()
+//    }
 
     override fun successfulLogIn() {
         startActivity(Intent(this@LoggedInActivity, MainActivity::class.java))
