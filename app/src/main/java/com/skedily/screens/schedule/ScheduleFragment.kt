@@ -1,5 +1,6 @@
 package com.skedily.screens.schedule
 
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -11,6 +12,7 @@ import com.skedily.databinding.FragmentScheduleBinding
 import com.skedily.model.ChecklistItem
 import com.skedily.model.Task
 import com.skedily.model.User
+import com.skedily.screens.add_card.AddCardActivity
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import org.joda.time.DateTime
 
@@ -59,7 +61,11 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
 
     }
 
-    override fun onClick() {
-        Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show()
+    override fun openAddCardScreen() {
+        startActivity(Intent(context, AddCardActivity::class.java))
+    }
+
+    override fun openTack() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

@@ -34,10 +34,14 @@ class ScheduleViewModel : BaseViewModel() {
 
 
     fun onClick() {
-        interactor!!.onClick()
+        interactor?.openTack()
     }
 
     fun onClickLocation(address: LatLng) {
-        interactor!!.onClick()
+
+    }
+
+    fun addTack() {
+        interactor?.openAddCardScreen()
     }
 }
