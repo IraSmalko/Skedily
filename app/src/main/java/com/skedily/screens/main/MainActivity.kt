@@ -28,10 +28,10 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
         super.onCreate(savedInstanceState)
         addFragmentToActivity(getSupportFragmentManager(), ScheduleFragment(), R.id.container)
         vm.interactor = this
+
     }
 
     override fun onClickDashboard() {
-
     }
 
     override fun onClickSchedule() {

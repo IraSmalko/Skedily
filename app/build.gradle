@@ -57,7 +57,7 @@ dependencies {
     implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:$rxlifecycle_version"
     implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxlifecycle_version"
     implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$rxlifecycle_version"
-    implementation'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
     // Data binding dependencies
     kapt "com.android.databinding:compiler:$android_plugin_version"

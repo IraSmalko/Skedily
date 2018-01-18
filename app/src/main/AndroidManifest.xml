@@ -11,6 +11,7 @@
         android:required="true"/>
 
     <application
+        android:name=".utils.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,6 +28,7 @@
         </activity>
 
         <activity android:name=".screens.authentication.LoggedInActivity" />
+        <activity android:name=".screens.add_card.AddCardActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
