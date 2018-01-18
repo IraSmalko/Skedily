@@ -1,3 +1,9 @@
 package com.skedily.repository
 
-interface IApiRepository
+import com.skedily.model.Task
+
+interface IApiRepository {
+
+    fun saveTask(task: Task)
+
+}

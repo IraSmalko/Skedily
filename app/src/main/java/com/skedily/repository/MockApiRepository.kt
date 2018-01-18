@@ -1,3 +1,9 @@
 package com.skedily.repository
 
-class MockApiRepositoryImpl : IApiRepository
+import com.skedily.model.Task
+
+class MockApiRepositoryImpl : IApiRepository {
+    override fun saveTask(task: Task) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}

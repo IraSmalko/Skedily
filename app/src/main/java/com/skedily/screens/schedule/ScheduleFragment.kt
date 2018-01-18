@@ -26,6 +26,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         1,
                         "Mock mock mock",
+                        "",
                         null,
                         DateTime(2017, 9, 24, 22, 55),
                         DateTime(2017, 9, 24, 23, 55),
@@ -34,6 +35,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         2,
                         "Title and title",
+                        "",
                         null,
                         DateTime(2017, 11, 22, 22, 55),
                         DateTime(2017, 11, 23, 23, 55),
@@ -43,6 +45,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         3,
                         "Test test test test test  test",
+                        "",
                         null,
                         DateTime(2017, 11, 25, 19, 55),
                         DateTime(2017, 11, 23, 21, 55),
@@ -51,6 +54,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         4,
                         "Buy meat",
+                        "",
                         null,
                         DateTime(2017, 11, 25, 19, 55),
                         DateTime(2017, 11, 25, 21, 55),
@@ -59,6 +63,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         1,
                         "Mock mock mock",
+                        "",
                         null,
                         DateTime(2017, 9, 24, 22, 55),
                         DateTime(2017, 9, 24, 23, 55),
@@ -67,6 +72,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         2,
                         "Title and title",
+                        "",
                         null,
                         DateTime(2017, 11, 22, 22, 55),
                         DateTime(2017, 11, 23, 23, 55),
@@ -76,6 +82,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         3,
                         "Test test test test test  test",
+                        "",
                         null,
                         DateTime(2017, 11, 25, 19, 55),
                         DateTime(2017, 11, 23, 21, 55),
@@ -84,6 +91,7 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
                 Task(
                         4,
                         "Buy meat",
+                        "",
                         null,
                         DateTime(2017, 11, 25, 19, 55),
                         DateTime(2017, 11, 25, 21, 55),

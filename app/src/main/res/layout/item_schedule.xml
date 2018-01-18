@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text='@{item.name}'
+                android:text='@{item.note}'
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:text="Name of name and name" />

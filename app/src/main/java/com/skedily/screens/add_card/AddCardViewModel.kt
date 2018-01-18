@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
 import com.google.android.gms.location.places.Place
-import com.google.firebase.database.FirebaseDatabase
 import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
@@ -14,6 +13,7 @@ import com.skedily.databinding.ItemChecklistBinding
 import com.skedily.model.ChecklistItem
 import com.skedily.model.Task
 import com.skedily.model.User
+import com.skedily.utils.ApiRepository
 import com.skedily.utils.weak
 import org.joda.time.DateTime
 
@@ -51,6 +51,8 @@ class AddCardViewModel : BaseViewModel() {
     var startDay = DateTime()
     var endDay = DateTime()
 
+    var category: String = ""
+
     fun init(interactor: AddCardInteractor) {
         this.interactor = interactor
     }
@@ -68,6 +70,7 @@ class AddCardViewModel : BaseViewModel() {
     }
 
     fun getCategory(item: String) {
+        category = item
     }
 
     fun addChecklist() {
@@ -92,7 +95,6 @@ class AddCardViewModel : BaseViewModel() {
     }
 
     fun clickSave() {
-        FirebaseDatabase.getInstance().reference.setValue(Task(1, note,
-                pickedPlace?.latLng, startDay, startDay, listPerson, checklistItems))
+        ApiRepository.saveTask(Task(1, note, category, pickedPlace?.latLng, startDay, startDay, listPerson, checklistItems))
     }
 }
