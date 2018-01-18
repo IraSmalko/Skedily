@@ -5,9 +5,9 @@ buildscript {
         kotlin_version = '1.1.51'
         android_plugin_version = '3.0.0'
         architecture_components_version = '1.0.0'
-        support_version = '27.0.1'
+        support_version = '27.0.2'
 
-        playServicesVersion = '11.4.0'
+        playServicesVersion = '11.6.2'
 
         rxandroid_version = '2.0.1'
         rxjava_version = '2.1.5'
@@ -24,6 +24,8 @@ buildscript {
 
         paperparcel_version = '2.0.4'
 
+        firebase_version = '11.6.2'
+
         sdkVersion = 26
         bToolsVersion = "26.0.2"
         minSdk = 21
@@ -33,13 +35,15 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        maven { url 'https://maven.google.com' }
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
         classpath 'com.google.gms:google-services:3.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
 }
 
@@ -47,6 +51,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
