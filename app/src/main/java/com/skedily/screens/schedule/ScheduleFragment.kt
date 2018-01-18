@@ -5,6 +5,7 @@ import android.location.Location
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.View
+import com.google.android.gms.maps.model.LatLng
 import com.skedily.R
 import com.skedily.base.BaseBoundVmFragment
 import com.skedily.databinding.FragmentScheduleBinding
@@ -14,6 +15,7 @@ import com.skedily.model.User
 import com.skedily.screens.add_card.AddCardActivity
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import org.joda.time.DateTime
+import java.util.*
 
 class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleViewModel>(
         R.layout.fragment_schedule, ScheduleViewModel::class), ScheduleInteractor {
@@ -25,9 +27,9 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
         vm.init(mutableListOf(
                 Task(
                         1,
-                        "Mock mock mock",
+                        "Mock mock mock Mock mock mock Mock mock mock Mock mock mock",
                         "",
-                        null,
+                        LatLng(666.7, 88.9),
                         DateTime(2017, 9, 24, 22, 55),
                         DateTime(2017, 9, 24, 23, 55),
                         mutableListOf<User>(User(55, "", "http://avatars3.githubusercontent.com/u/22910919?s=400&u=94b560541ddb1d811ba700dea56375db1b0a2b57&v=4", Location(""), ContextCompat.getColor(context!!, R.color.user1))),

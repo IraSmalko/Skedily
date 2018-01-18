@@ -20,11 +20,13 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/currentDate"
         android:background='@{item.color}'
+        android:elevation="4dp"
+        android:outlineProvider="bounds"
         tools:background="#42A5F5">
 
         <ImageView
+            android:id="@+id/lineVertical"
             android:layout_width="1dp"
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
@@ -65,14 +67,14 @@
             android:padding="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:text='@{item.note}'
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                tools:text="Name of name and name" />
+                tools:text="Name of name and name Name of name and nameName of name and name" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,16 +83,17 @@
                 android:textColor="@color/white"
                 tools:text="7 - 8" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:drawableLeft="@drawable/ic_location"
-                android:drawablePadding="4dp"
-                android:onClick="@{() -> vm.onClickLocation(item.address)}"
-                android:textColor="@color/white"
-                android:visibility='@{item.address != null ? View.VISIBLE : View.GONE}'
-                tools:text="location" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="24dp"-->
+                <!--android:drawableLeft="@drawable/ic_location"-->
+                <!--android:drawablePadding="4dp"-->
+                <!--android:onClick="@{() -> vm.onClickLocation(item.address)}"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:visibility='@{item.address != null ? View.VISIBLE : View.GONE}'-->
+                <!--android:text="location"-->
+                <!--tools:text="location" />-->
         </LinearLayout>
 
         <ImageView
