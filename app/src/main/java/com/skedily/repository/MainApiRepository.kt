@@ -1,3 +1,12 @@
 package com.skedily.repository
 
-class MainApiRepository : IApiRepository
+import com.google.firebase.database.FirebaseDatabase
+import com.skedily.model.Task
+
+class MainApiRepository : IApiRepository {
+
+    override fun saveTask(task: Task) {
+        FirebaseDatabase.getInstance().reference.child(groupUrl).setValue(task.toPost())
+    }
+
+}
