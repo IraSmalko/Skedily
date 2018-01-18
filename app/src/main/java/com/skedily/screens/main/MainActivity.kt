@@ -2,12 +2,14 @@ package com.skedily.screens.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.skedily.R
 import com.skedily.base.BaseBoundVmActivity
 import com.skedily.databinding.ActivityMainBinding
 import com.skedily.screens.authentication.LoggedInActivity
 import com.skedily.screens.schedule.ScheduleFragment
+import com.skedily.utils.ApiRepository
 import com.skedily.utils.addFragmentToActivity
 
 /**
@@ -26,12 +28,13 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragmentToActivity(getSupportFragmentManager(), ScheduleFragment(), R.id.container)
+        addFragmentToActivity(supportFragmentManager, ScheduleFragment(), R.id.container)
         vm.interactor = this
 
     }
 
     override fun onClickDashboard() {
+       Toast.makeText(this, ApiRepository.createGroup(), Toast.LENGTH_LONG).show()
     }
 
     override fun onClickSchedule() {
