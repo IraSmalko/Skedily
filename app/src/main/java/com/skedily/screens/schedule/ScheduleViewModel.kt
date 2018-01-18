@@ -13,7 +13,7 @@ import com.skedily.model.Task
 import com.skedily.utils.weak
 
 class ScheduleViewModel : BaseViewModel() {
-    var interactor by weak<SheduleInteractor>()
+    var interactor by weak<ScheduleInteractor>()
     val taskItems = ObservableArrayList<Task>()
 
     fun init(list: List<Task>) {
@@ -25,17 +25,11 @@ class ScheduleViewModel : BaseViewModel() {
         LastAdapter(taskItems, BR.item)
                 .type { _, _ ->
                     Type<ItemScheduleBinding>(R.layout.item_schedule)
-                            .onClick {
-
-                            }
                 }
                 .into(recycler)
     }
 
 
-    fun onClick() {
-        interactor?.openTack()
-    }
 
     fun onClickLocation(address: LatLng) {
 

@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_schedule.*
 import org.joda.time.DateTime
 
 class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleViewModel>(
-        R.layout.fragment_schedule, ScheduleViewModel::class), SheduleInteractor {
+        R.layout.fragment_schedule, ScheduleViewModel::class), ScheduleInteractor {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -103,9 +103,5 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
 
     override fun openAddCardScreen() {
         startActivity(Intent(context, AddCardActivity::class.java))
-    }
-
-    override fun openTack() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

@@ -62,7 +62,6 @@ fun scrollTop(recycler: RecyclerView, position: Int) {
 @BindingAdapter("setHeight")
 fun setHeight(layout: ViewGroup, height: Int) {
     layout.layoutParams.height = height
-
 }
 
 interface Function {

@@ -9,7 +9,7 @@ data class User(
         val id: Int,
         val name: String,
         val iconUrl: String,
-        val location: Location,
+        val location: Location?,
         val color: Int
 ) : PaperParcelable {
     companion object {

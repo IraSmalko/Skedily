@@ -1,6 +1,5 @@
 package com.skedily.screens.schedule
 
-interface SheduleInteractor{
+interface ScheduleInteractor {
     fun openAddCardScreen()
-    fun openTack()
 }
