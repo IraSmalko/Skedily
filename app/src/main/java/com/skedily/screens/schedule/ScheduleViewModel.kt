@@ -39,7 +39,7 @@ class ScheduleViewModel : BaseViewModel() {
                 .type { _, _ ->
                     Type<ItemScheduleBinding>(R.layout.item_schedule)
                             .onClick {
-                                interactor?.openTack()
+                                openTack()
                             }
                 }
                 .into(scheduleRecycler)
@@ -82,5 +82,9 @@ class ScheduleViewModel : BaseViewModel() {
 
         }
         return null
+    }
+
+    private fun openTack() {
+
     }
 }

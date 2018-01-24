@@ -67,8 +67,8 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 app:layoutManager="android.support.v7.widget.GridLayoutManager"
-                app:recyclerSpans='@{vm.items}'
-                app:spanCount="7" />
+                app:spanCount="7"
+                tools:listitem="@layout/item_day"/>
 
             <View
                 android:layout_width="match_parent"

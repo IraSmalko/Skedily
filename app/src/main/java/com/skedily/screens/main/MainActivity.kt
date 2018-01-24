@@ -35,11 +35,11 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
     }
 
     override fun onClickDashboard() {
-        replaceFragment(supportFragmentManager, ScheduleFragment(), R.id.container)
+        replaceFragment(supportFragmentManager, DashboardFragment(), R.id.container)
     }
 
     override fun onClickSchedule() {
-
+        replaceFragment(supportFragmentManager, ScheduleFragment(), R.id.container)
     }
 
     override fun onClickFamily() {

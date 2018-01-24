@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="vm"
+            name="item"
             type="com.skedily.model.DayItem" />
     </data>
 
@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="4dp"
             android:gravity="center"
-            android:text='@{item.nunber}'
+            android:text='@{item.number}'
             tools:text="12" />
 
         <LinearLayout

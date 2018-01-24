@@ -5,21 +5,14 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="item"
             type="com.skedily.model.Task" />
-
-        <variable
-            name="vm"
-            type="com.skedily.screens.dashboard.DashboardViewModel" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/currentDate"
         android:background='@{item.color}'
         android:orientation="horizontal"
         android:padding="8dp"
