@@ -16,9 +16,10 @@
             type="com.skedily.screens.dashboard.DashboardViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/currentDate"
         android:background='@{item.color}'
         android:orientation="horizontal"
         android:padding="8dp"
