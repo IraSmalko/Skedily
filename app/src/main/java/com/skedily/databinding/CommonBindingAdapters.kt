@@ -7,8 +7,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.Spinner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
@@ -62,43 +65,51 @@ fun setHeight(layout: ViewGroup, height: Int) {
     layout.layoutParams.height = height
 }
 
-@BindingAdapter("setUserDots")
-fun setUserDots(v: TextView, userList: List<User>) {
+@BindingAdapter("setUserDots", "numberOfDot")
+fun setUserDots(v: View, userList: List<User>, numberOfDot: Int) {
     when (userList.size) {
         1 -> {
-            val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            indicator?.let {
-                it.setTint(userList.first().color)
-                it.setBounds(0, 2, 0, 0)
+            if (numberOfDot == 2) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList.first().color)
+                v.background = indicator
             }
-            v.setCompoundDrawables(null, indicator, null, null)
         }
         2 -> {
-            val firstIndicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            firstIndicator?.setTint(userList.first().color)
-            val secondIndicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            secondIndicator?.setTint(userList[1].color)
-            v.setCompoundDrawables(firstIndicator, null, secondIndicator, null)
+            if (numberOfDot == 1) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList.first().color)
+                v.background = indicator
+            }
+            if (numberOfDot == 3) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList[1].color)
+                v.background = indicator
+            }
         }
         3 -> {
-            val firstIndicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            firstIndicator?.setTint(userList.first().color)
-            val secondIndicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            secondIndicator?.let {
-                it.setTint(userList[0].color)
-                it.setBounds(0, 2, 0, 0)
+            if (numberOfDot == 1) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList.first().color)
+                v.background = indicator
             }
-            val thirdIndicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            thirdIndicator?.setTint(userList[2].color)
-            v.setCompoundDrawables(firstIndicator, secondIndicator, thirdIndicator, null)
+            if (numberOfDot == 2) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList[1].color)
+                v.background = indicator
+            }
+            if (numberOfDot == 3) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList[2].color)
+                v.background = indicator
+            }
         }
         else -> {
-            val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle)
-            indicator?.let {
-                it.setTint(ContextCompat.getColor(v.context, R.color.darkGreey))
-                it.setBounds(0, 2, 0, 0)
+            if (numberOfDot == 2) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(ContextCompat.getColor(v.context, R.color.darkGreey))
+                v.background = indicator
             }
-            v.setCompoundDrawables(null, indicator, null, null)
         }
     }
 
