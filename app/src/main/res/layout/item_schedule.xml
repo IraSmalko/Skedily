@@ -13,7 +13,7 @@
 
         <variable
             name="vm"
-            type="com.skedily.screens.schedule.ScheduleViewModel" />
+            type="com.skedily.screens.dashboard.DashboardViewModel" />
     </data>
 
     <RelativeLayout

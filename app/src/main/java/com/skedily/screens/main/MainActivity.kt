@@ -7,7 +7,7 @@ import com.skedily.R
 import com.skedily.base.BaseBoundVmActivity
 import com.skedily.databinding.ActivityMainBinding
 import com.skedily.screens.authentication.LoggedInActivity
-import com.skedily.screens.schedule.ScheduleFragment
+import com.skedily.screens.dashboard.DashboardFragment
 import com.skedily.utils.addFragmentToActivity
 
 /**
@@ -26,7 +26,7 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragmentToActivity(getSupportFragmentManager(), ScheduleFragment(), R.id.container)
+        addFragmentToActivity(getSupportFragmentManager(), DashboardFragment(), R.id.container)
         vm.interactor = this
 
     }

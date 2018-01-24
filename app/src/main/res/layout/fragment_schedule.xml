@@ -7,18 +7,75 @@
 
         <variable
             name="vm"
-            type="com.skedily.screens.schedule.ScheduleViewModel" />
+            type="" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/calendarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="8dp"
+                    android:text="September 2017"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="4dp"
+                        android:background="@drawable/circle_button"
+                        android:src="@drawable/right_arrow" />
+
+                    <ImageButton
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_button"
+                        android:src="@drawable/left_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:padding="8dp"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:recyclerSpans='@{vm.items}'
+                app:scrollTop='@{vm.positionToScroll}'
+                app:spanCount="7" />
+
+        </LinearLayout>
 
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/calendarLayout"
             app:addHidingFabListener='@{fab}'
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item_schedule" />
@@ -27,11 +84,12 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
             android:onClick='@{() -> vm.addTack()}'
             android:src="@drawable/ic_plus"
             app:fabSize="normal" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </RelativeLayout>
 </layout>
