@@ -7,8 +7,10 @@ import com.skedily.R
 import com.skedily.base.BaseBoundVmActivity
 import com.skedily.databinding.ActivityMainBinding
 import com.skedily.screens.authentication.LoggedInActivity
+import com.skedily.screens.family.FamilyFragment
 import com.skedily.screens.schedule.ScheduleFragment
 import com.skedily.utils.addFragmentToActivity
+import com.skedily.utils.replaceFragment
 
 /**
  * Created by smalk on 11/26/2017.
@@ -26,12 +28,13 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragmentToActivity(getSupportFragmentManager(), ScheduleFragment(), R.id.container)
+        addFragmentToActivity(supportFragmentManager, ScheduleFragment(), R.id.container)
         vm.interactor = this
 
     }
 
     override fun onClickDashboard() {
+        replaceFragment(supportFragmentManager, ScheduleFragment(), R.id.container)
     }
 
     override fun onClickSchedule() {
@@ -39,6 +42,6 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
     }
 
     override fun onClickFamily() {
-
+        replaceFragment(supportFragmentManager, FamilyFragment(), R.id.container)
     }
 }
