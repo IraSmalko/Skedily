@@ -26,7 +26,7 @@ class DashboardFragment : BaseBoundVmFragment<FragmentDashboardBinding, Dashboar
         startActivity(Intent(context, AddCardActivity::class.java))
     }
 
-    override fun openTack() {
+    override fun openTask() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

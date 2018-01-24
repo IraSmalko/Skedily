@@ -105,9 +105,9 @@ fun setUserDots(v: View, userList: List<User>, numberOfDot: Int) {
             }
         }
         else -> {
-            if (numberOfDot == 2) {
+            if (userList.size > 3 && numberOfDot == 2) {
                 val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
-                indicator?.setTint(ContextCompat.getColor(v.context, R.color.darkGreey))
+                indicator?.setTint(ContextCompat.getColor(v.context, R.color.darkGrey))
                 v.background = indicator
             }
         }

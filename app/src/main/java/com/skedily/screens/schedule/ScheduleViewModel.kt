@@ -1,5 +1,6 @@
 package com.skedily.screens.schedule
 
+import android.databinding.Bindable
 import android.databinding.ObservableArrayList
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
@@ -7,10 +8,11 @@ import com.github.nitrico.lastadapter.Type
 import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
+import com.skedily.databinding.ItemDayBinding
 import com.skedily.databinding.ItemScheduleBinding
 import com.skedily.model.DayItem
 import com.skedily.model.Task
-import com.skedily.model.User
+import com.skedily.utils.calendarMonthInterval
 import com.skedily.utils.days
 import com.skedily.utils.weak
 import org.joda.time.DateTime
@@ -22,12 +24,22 @@ import org.joda.time.Interval
 class ScheduleViewModel : BaseViewModel() {
 
     var interactor by weak<ScheduleInteractor>()
-    val taskItems = ObservableArrayList<Task>()
+    val taskItems = mutableListOf<Task>()
+    val scheduledTasks = ObservableArrayList<Task>()
     val dayItems = ObservableArrayList<DayItem>()
 
     private val today = DateTime.now().withTimeAtStartOfDay()
 
-    var numberOfMonth = today.monthOfYear()
+    var firstDayOfMonth = today.minusDays(today.dayOfMonth - 1)
+
+    var selection = DayItem(today.dayOfMonth)
+        @Bindable get
+        private set(value) {
+            selection.isSelected = false
+            value.isSelected = true
+            field = value
+            notifyPropertyChanged(BR.selection)
+        }
 
     fun init(list: List<Task>) {
         this.taskItems.addAll(list)
@@ -35,7 +47,7 @@ class ScheduleViewModel : BaseViewModel() {
 
     fun initRecyclers(scheduleRecycler: RecyclerView, calendarRecycler: RecyclerView) {
         taskItems.sortBy { it.startTime }
-        LastAdapter(taskItems, BR.item)
+        LastAdapter(scheduledTasks, BR.item)
                 .type { _, _ ->
                     Type<ItemScheduleBinding>(R.layout.item_schedule)
                             .onClick {
@@ -45,43 +57,53 @@ class ScheduleViewModel : BaseViewModel() {
                 .into(scheduleRecycler)
 
         addDays()
+        preselectDay()
         LastAdapter(dayItems, BR.item)
                 .type { _, _ ->
-                    Type<ItemScheduleBinding>(R.layout.item_day)
+                    Type<ItemDayBinding>(R.layout.item_day)
                             .onClick {
-                                loadScheduledOnDayTacks()
+                                selection = it.binding.item!!
+                                loadScheduledOnDayTasks()
                             }
                 }
                 .into(calendarRecycler)
     }
 
-    fun addTack() {
+    fun addTask() {
         interactor?.openAddCardScreen()
     }
 
-    private fun loadScheduledOnDayTacks() {
+    private fun preselectDay() = dayItems.forEach {
+        if (it.number == today.dayOfMonth) {
+            selection = it
+        }
+    }
 
+    private fun loadScheduledOnDayTasks() {
+        scheduledTasks.clear()
+        selection.tackList?.forEach {
+            scheduledTasks.add(it)
+        }
     }
 
     private fun addDays() {
-        val firstShovingDay = numberOfMonth.withMinimumValue().minusDays(numberOfMonth.withMinimumValue().dayOfWeek)
-        val lastShovingDay = numberOfMonth.withMaximumValue().plusDays(6 - numberOfMonth.withMaximumValue().dayOfWeek)
-        Interval(firstShovingDay, lastShovingDay).days().forEach {
-            val item = DayItem(it.dayOfMonth, checkHasTack(it))
+        firstDayOfMonth.calendarMonthInterval.days().forEach {
+            val item = DayItem(it.dayOfMonth, checkHasTask(it), isThisMonth = it.monthOfYear == today.monthOfYear)
             dayItems += item
         }
     }
 
-    private fun checkHasTack(dateTime: DateTime): List<User>? {
-        taskItems.forEach { tack ->
-            Interval(tack.startTime, tack.endTime).days().forEach {
+    private fun checkHasTask(dateTime: DateTime): List<Task> {
+        val taskList = mutableListOf<Task>()
+        taskItems.forEach { task ->
+            Interval(task.startTime, task.endTime).days().forEach {
                 if (it.dayOfYear == dateTime.dayOfYear && it.year == dateTime.year) {
-                    return tack.listPerson
+                    taskList.add(task)
                 }
             }
 
         }
-        return null
+        return taskList
     }
 
     private fun openTack() {

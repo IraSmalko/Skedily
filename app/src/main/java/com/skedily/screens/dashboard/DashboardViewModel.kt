@@ -34,7 +34,7 @@ class DashboardViewModel : BaseViewModel() {
 
 
     fun onClick() {
-        interactor?.openTack()
+        interactor?.openTask()
     }
 
     fun onClickLocation(address: LatLng) {

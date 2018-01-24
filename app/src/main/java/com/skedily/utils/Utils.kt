@@ -4,6 +4,7 @@ package com.skedily.utils
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import org.joda.time.DateTime
+import org.joda.time.Interval
 import org.joda.time.Period
 import org.joda.time.ReadableInterval
 
@@ -22,6 +23,13 @@ fun replaceFragment(manager: FragmentManager, fragment: Fragment, containerId: I
     transaction.addToBackStack(fragment.javaClass.canonicalName)
     transaction.commit()
 }
+
+val DateTime.calendarMonthInterval: Interval
+    get() {
+        val begin = dayOfMonth().withMinimumValue().dayOfWeek().withMinimumValue()
+        val end = dayOfMonth().withMaximumValue().dayOfWeek().withMaximumValue()
+        return Interval(begin, end)
+    }
 
 fun ReadableInterval.days(step: Int = 1): Sequence<DateTime> {
     require(step > 0) { "step must postive value [$step]" }

@@ -45,7 +45,7 @@ class MockApiRepositoryImpl : IApiRepository {
                     "",
                     null,
                     DateTime(2017, 11, 25, 19, 55),
-                    DateTime(2017, 11, 23, 21, 55),
+                    DateTime(2017, 11, 27, 21, 55),
                     mutableListOf<User>(User(55, "", "http://www.followingthenerd.com/site/wp-content/uploads/avatar.jpg_274898881.jpg", Location(""), ContextCompat.getColor(context, R.color.user2)),
                             User(55, "", "http://avatars3.githubusercontent.com/u/22910919?s=400&u=94b560541ddb1d811ba700dea56375db1b0a2b57&v=4", Location(""), ContextCompat.getColor(context, R.color.user1)),
                                     User(55, "", "http://avatars3.githubusercontent.com/u/22910919?s=400&u=94b560541ddb1d811ba700dea56375db1b0a2b57&v=4", Location(""), ContextCompat.getColor(context, R.color.user3))),
@@ -84,7 +84,7 @@ class MockApiRepositoryImpl : IApiRepository {
                     "",
                     null,
                     DateTime(2017, 11, 25, 19, 55),
-                    DateTime(2017, 11, 23, 21, 55),
+                    DateTime(2017, 11, 26, 21, 55),
                     mutableListOf<User>(User(55, "", "http://www.followingthenerd.com/site/wp-content/uploads/avatar.jpg_274898881.jpg", Location(""), ContextCompat.getColor(context, R.color.user2))),
                     ArrayList<ChecklistItem>()),
             Task(
