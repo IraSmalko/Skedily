@@ -2,7 +2,6 @@ package com.skedily.screens.authentication
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.widget.Toast
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -17,7 +16,6 @@ import com.skedily.databinding.ActivityLoggedInBinding
 import com.skedily.screens.main.MainActivity
 import com.skedily.utils.AuthListener
 import kotlinx.android.synthetic.main.activity_logged_in.*
-import kotlinx.android.synthetic.main.item_schedule.*
 
 
 /**

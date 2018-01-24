@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             app:addHidingFabListener='@{fab}'
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_schedule" />
+            tools:listitem="@layout/item_dashboard" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

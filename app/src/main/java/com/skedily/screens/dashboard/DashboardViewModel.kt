@@ -24,7 +24,7 @@ class DashboardViewModel : BaseViewModel() {
         taskItems.sortBy { it.startTime }
         LastAdapter(taskItems, BR.item)
                 .type { _, _ ->
-                    Type<ItemScheduleBinding>(R.layout.item_schedule)
+                    Type<ItemScheduleBinding>(R.layout.item_dashboard)
                             .onClick {
 
                             }
