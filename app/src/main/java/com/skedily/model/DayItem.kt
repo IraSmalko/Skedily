@@ -5,5 +5,5 @@ package com.skedily.model
  */
 data class DayItem(
         val number: Int,
-        val userList: List<User>
+        val userList: List<User>?
 )

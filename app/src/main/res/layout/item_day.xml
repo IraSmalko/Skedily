@@ -5,15 +5,9 @@
 
     <data>
 
-        <import type="android.view.View" />
-
-        <variable
-            name="item"
-            type="com.skedily.model.Task" />
-
         <variable
             name="vm"
-            type="com.skedily.screens.dashboard.DashboardViewModel" />
+            type="com.skedily.model.DayItem" />
     </data>
 
     <RelativeLayout

@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="" />
+            type="com.skedily.screens.schedule.ScheduleViewModel" />
     </data>
 
     <RelativeLayout
