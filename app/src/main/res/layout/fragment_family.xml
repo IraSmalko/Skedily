@@ -29,7 +29,8 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             android:onClick='@{() -> vm.addPerson()}'
-            android:src="@drawable/ic_plus"
+            android:src="@drawable/ic_add_person"
+            android:tint="@color/white"
             app:fabSize="normal" />
 
     </android.support.design.widget.CoordinatorLayout>

@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.skedily.screens.schedule.ScheduleViewModel" />
@@ -68,7 +70,7 @@
                 android:paddingRight="8dp"
                 app:layoutManager="android.support.v7.widget.GridLayoutManager"
                 app:spanCount="7"
-                tools:listitem="@layout/item_day"/>
+                tools:listitem="@layout/item_day" />
 
             <View
                 android:layout_width="match_parent"
@@ -89,6 +91,20 @@
             app:addHidingFabListener='@{fab}'
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item_schedule" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="42dp"
+            android:layout_below="@+id/calendarLayout"
+            android:drawableTop="@drawable/square_plus"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@string/no_tasks"
+            android:visibility='@{vm.placeholderVisibility ? View.VISIBLE : View.GONE}' />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

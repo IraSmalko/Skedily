@@ -41,8 +41,16 @@ class ScheduleViewModel : BaseViewModel() {
             notifyPropertyChanged(BR.selection)
         }
 
+    var placeholderVisibility: Boolean = false
+        @Bindable get
+        private set(value) {
+            field = value
+            notifyPropertyChanged(BR.placeholderVisibility)
+        }
+
     fun init(list: List<Task>) {
         this.taskItems.addAll(list)
+        loadScheduledOnDayTasks()
     }
 
     fun initRecyclers(scheduleRecycler: RecyclerView, calendarRecycler: RecyclerView) {
@@ -84,6 +92,7 @@ class ScheduleViewModel : BaseViewModel() {
         selection.tackList?.forEach {
             scheduledTasks.add(it)
         }
+        placeholderVisibility = scheduledTasks.isEmpty()
     }
 
     private fun addDays() {
