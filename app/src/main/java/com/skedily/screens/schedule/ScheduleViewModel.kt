@@ -8,15 +8,19 @@ import com.github.nitrico.lastadapter.Type
 import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
+import com.skedily.databinding.ItemCalendarHeaderBinding
 import com.skedily.databinding.ItemDayBinding
 import com.skedily.databinding.ItemScheduleBinding
+import com.skedily.model.CalendarHeader
 import com.skedily.model.DayItem
 import com.skedily.model.Task
 import com.skedily.utils.calendarMonthInterval
+import com.skedily.utils.calendarWeekInterval
 import com.skedily.utils.days
 import com.skedily.utils.weak
 import org.joda.time.DateTime
 import org.joda.time.Interval
+import java.lang.IllegalStateException
 
 /**
  * Created by smalk on 1/24/2018.
@@ -26,7 +30,7 @@ class ScheduleViewModel : BaseViewModel() {
     var interactor by weak<ScheduleInteractor>()
     val taskItems = mutableListOf<Task>()
     val scheduledTasks = ObservableArrayList<Task>()
-    val dayItems = ObservableArrayList<DayItem>()
+    val dayItems = ObservableArrayList<Any>()
 
     private val today = DateTime.now().withTimeAtStartOfDay()
 
@@ -50,7 +54,6 @@ class ScheduleViewModel : BaseViewModel() {
 
     fun init(list: List<Task>) {
         this.taskItems.addAll(list)
-        loadScheduledOnDayTasks()
     }
 
     fun initRecyclers(scheduleRecycler: RecyclerView, calendarRecycler: RecyclerView) {
@@ -63,16 +66,20 @@ class ScheduleViewModel : BaseViewModel() {
                             }
                 }
                 .into(scheduleRecycler)
-
+        addHeaders()
         addDays()
         preselectDay()
+        loadScheduledOnDayTasks()
         LastAdapter(dayItems, BR.item)
-                .type { _, _ ->
-                    Type<ItemDayBinding>(R.layout.item_day)
-                            .onClick {
-                                selection = it.binding.item!!
-                                loadScheduledOnDayTasks()
-                            }
+                .type { item, _ ->
+                    when (item) {
+                        is CalendarHeader -> Type<ItemCalendarHeaderBinding>(R.layout.item_calendar_header)
+                        is DayItem -> Type<ItemDayBinding>(R.layout.item_day).onClick {
+                            selection = item
+                            loadScheduledOnDayTasks()
+                        }
+                        else -> throw IllegalStateException()
+                    }
                 }
                 .into(calendarRecycler)
     }
@@ -81,8 +88,12 @@ class ScheduleViewModel : BaseViewModel() {
         interactor?.openAddCardScreen()
     }
 
+    private fun addHeaders() {
+        today.calendarWeekInterval.days().forEach { dayItems += CalendarHeader(it) }
+    }
+
     private fun preselectDay() = dayItems.forEach {
-        if (it.number == today.dayOfMonth) {
+        if (it is DayItem && it.number == today.dayOfMonth) {
             selection = it
         }
     }

@@ -31,6 +31,13 @@ val DateTime.calendarMonthInterval: Interval
         return Interval(begin, end)
     }
 
+val DateTime.calendarWeekInterval: Interval
+    get() {
+        val begin = dayOfWeek().withMinimumValue()
+        val end = dayOfWeek().withMaximumValue()
+        return Interval(begin, end)
+    }
+
 fun ReadableInterval.days(step: Int = 1): Sequence<DateTime> {
     require(step > 0) { "step must postive value [$step]" }
     return generateSequence(start.startOfDay()) { it + step.days() }.takeWhile { it <= end }
