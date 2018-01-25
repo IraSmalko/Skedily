@@ -88,6 +88,21 @@ class ScheduleViewModel : BaseViewModel() {
         interactor?.openAddCardScreen()
     }
 
+    fun getBigCalendar() {
+        dayItems.clear()
+        addHeaders()
+        addDays()
+    }
+
+    fun getSmallCalendar() {
+        dayItems.clear()
+        addHeaders()
+        today.calendarWeekInterval.days().forEach {
+            val item = DayItem(it.dayOfMonth, checkHasTask(it), isThisMonth = it.monthOfYear == today.monthOfYear)
+            dayItems += item
+        }
+    }
+
     private fun addHeaders() {
         today.calendarWeekInterval.days().forEach { dayItems += CalendarHeader(it) }
     }

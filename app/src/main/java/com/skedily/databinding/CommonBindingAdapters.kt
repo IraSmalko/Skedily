@@ -115,7 +115,6 @@ fun setUserDots(v: View, userList: List<User>, numberOfDot: Int) {
             }
         }
     }
-
 }
 
 interface Function {

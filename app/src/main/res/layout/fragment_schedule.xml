@@ -68,6 +68,7 @@
                 android:padding="8dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
+                app:scrollCalendarListener='@{() -> vm.getBigCalendar()}'
                 app:layoutManager="android.support.v7.widget.GridLayoutManager"
                 app:spanCount="7"
                 tools:listitem="@layout/item_day" />
@@ -88,6 +89,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="4dp"
+            app:addSmallCalendarListener='@{() -> vm.getSmallCalendar()}'
             app:addHidingFabListener='@{fab}'
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:listitem="@layout/item_schedule" />
