@@ -20,7 +20,6 @@ fun addFragmentToActivity(manager: FragmentManager, fragment: Fragment, containe
 fun replaceFragment(manager: FragmentManager, fragment: Fragment, containerId: Int) {
     val transaction = manager.beginTransaction()
     transaction.replace(containerId, fragment)
-    transaction.addToBackStack(fragment.javaClass.canonicalName)
     transaction.commit()
 }
 

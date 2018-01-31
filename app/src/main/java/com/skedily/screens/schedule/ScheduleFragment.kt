@@ -6,7 +6,6 @@ import android.view.View
 import com.skedily.R
 import com.skedily.base.BaseBoundVmFragment
 import com.skedily.databinding.FragmentScheduleBinding
-import com.skedily.repository.MockApiRepositoryImpl
 import com.skedily.screens.add_card.AddCardActivity
 import kotlinx.android.synthetic.main.fragment_schedule.*
 
@@ -20,8 +19,6 @@ class ScheduleFragment : BaseBoundVmFragment<FragmentScheduleBinding, ScheduleVi
         super.onViewCreated(view, savedInstanceState)
 
         vm.interactor = this
-
-        vm.init(MockApiRepositoryImpl().getTacks(context!!))
         vm.initRecyclers(recycler, recyclerCalendar)
     }
 

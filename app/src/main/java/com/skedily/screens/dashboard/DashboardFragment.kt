@@ -6,7 +6,6 @@ import android.view.View
 import com.skedily.R
 import com.skedily.base.BaseBoundVmFragment
 import com.skedily.databinding.FragmentDashboardBinding
-import com.skedily.repository.MockApiRepositoryImpl
 import com.skedily.screens.add_card.AddCardActivity
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
@@ -17,7 +16,6 @@ class DashboardFragment : BaseBoundVmFragment<FragmentDashboardBinding, Dashboar
         super.onViewCreated(view, savedInstanceState)
 
         vm.interactor = this
-        vm.init(MockApiRepositoryImpl().getTacks(context!!))
         vm.initRecycler(recycler)
 
     }

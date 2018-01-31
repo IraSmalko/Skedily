@@ -82,7 +82,7 @@ fun setUserDots(v: View, userList: List<User>, numberOfDot: Int) {
                 v.background = indicator
             }
             if (numberOfDot == 2) {
-              v.visibility = View.GONE
+                v.visibility = View.GONE
             }
             if (numberOfDot == 3) {
                 val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)

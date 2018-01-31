@@ -14,6 +14,8 @@ import com.skedily.databinding.ItemScheduleBinding
 import com.skedily.model.CalendarHeader
 import com.skedily.model.DayItem
 import com.skedily.model.Task
+import com.skedily.repository.MockApiRepositoryImpl
+import com.skedily.utils.App.Companion.app
 import com.skedily.utils.calendarMonthInterval
 import com.skedily.utils.calendarWeekInterval
 import com.skedily.utils.days
@@ -28,7 +30,7 @@ import java.lang.IllegalStateException
 class ScheduleViewModel : BaseViewModel() {
 
     var interactor by weak<ScheduleInteractor>()
-    val taskItems = mutableListOf<Task>()
+    val taskItems = MockApiRepositoryImpl().getTacks(app)
     val scheduledTasks = ObservableArrayList<Task>()
     val dayItems = ObservableArrayList<Any>()
 
@@ -52,10 +54,6 @@ class ScheduleViewModel : BaseViewModel() {
             notifyPropertyChanged(BR.placeholderVisibility)
         }
 
-    fun init(list: List<Task>) {
-        this.taskItems.addAll(list)
-    }
-
     fun initRecyclers(scheduleRecycler: RecyclerView, calendarRecycler: RecyclerView) {
         taskItems.sortBy { it.startTime }
         LastAdapter(scheduledTasks, BR.item)
@@ -66,6 +64,8 @@ class ScheduleViewModel : BaseViewModel() {
                             }
                 }
                 .into(scheduleRecycler)
+        scheduledTasks.clear()
+        dayItems.clear()
         addHeaders()
         addDays()
         preselectDay()

@@ -17,18 +17,17 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="56dp"/>
+            android:layout_marginBottom="56dp" />
 
-        <FrameLayout
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/bottom_nav_item_tint"
+            app:itemTextColor="@color/bottom_nav_item_tint"
+            app:menu="@menu/main" />
 
-            <include
-                layout="@layout/view_bottom_sheet"
-                app:onClickDashboard='@{() -> vm.onClickDashboard()}'
-                app:onClickFamily='@{() -> vm.onClickFamily()}'
-                app:onClickSchedule='@{() -> vm.onClickSchedule()}' />
-        </FrameLayout>
     </RelativeLayout>
 </layout>

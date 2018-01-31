@@ -1,6 +1,5 @@
 package com.skedily.screens.dashboard
 
-import android.databinding.ObservableArrayList
 import android.support.v7.widget.RecyclerView
 import com.github.nitrico.lastadapter.LastAdapter
 import com.github.nitrico.lastadapter.Type
@@ -9,16 +8,13 @@ import com.skedily.BR
 import com.skedily.R
 import com.skedily.base.BaseViewModel
 import com.skedily.databinding.ItemScheduleBinding
-import com.skedily.model.Task
+import com.skedily.repository.MockApiRepositoryImpl
+import com.skedily.utils.App.Companion.app
 import com.skedily.utils.weak
 
 class DashboardViewModel : BaseViewModel() {
     var interactor by weak<DashboardInteractor>()
-    val taskItems = ObservableArrayList<Task>()
-
-    fun init(list: List<Task>) {
-        this.taskItems.addAll(list)
-    }
+    val taskItems = MockApiRepositoryImpl().getTacks(app)
 
     fun initRecycler(recycler: RecyclerView) {
         taskItems.sortBy { it.startTime }
