@@ -49,14 +49,17 @@
                         android:layout_width="42dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="4dp"
-                        android:background="@drawable/circle_button"
-                        android:src="@drawable/right_arrow" />
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/right_arrow_drop_circle"
+                        android:onClick='@{() -> vm.previousMonth()}' />
 
                     <ImageButton
                         android:layout_width="42dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/circle_button"
-                        android:src="@drawable/left_arrow" />
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/left_arrow_drop_circle"
+                        android:onClick='@{() -> vm.nextMonth()}'
+                        style="@style/Widget.AppCompat.ImageButton"/>
                 </LinearLayout>
             </LinearLayout>
 

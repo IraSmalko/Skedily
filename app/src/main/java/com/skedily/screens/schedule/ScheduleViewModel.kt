@@ -36,13 +36,22 @@ class ScheduleViewModel : BaseViewModel() {
 
     private val today = DateTime.now().withTimeAtStartOfDay()
 
-    var firstDayOfMonth = today.minusDays(today.dayOfMonth - 1)
+    var dayOfCurrentMonth = today
+        @Bindable get
+        private set(value) {
+            field = value
+            notifyPropertyChanged(BR.dayOfCurrentMonth)
+        }
 
-    val monthHeader: String
-        @Bindable get () = "${today.monthOfYear().asText} ${today.year().asText}"
+    var monthHeader: String = ""
+        @Bindable("dayOfCurrentMonth") get () = "${dayOfCurrentMonth.monthOfYear().asText} ${dayOfCurrentMonth.year().asText}"
+        private set(value) {
+            field = value
+            notifyPropertyChanged(BR.monthHeader)
+        }
 
 
-    var selection = DayItem(today.dayOfMonth)
+    var selection = DayItem(today.dayOfYear)
         @Bindable get
         private set(value) {
             selection.isSelected = false
@@ -71,7 +80,7 @@ class ScheduleViewModel : BaseViewModel() {
         scheduledTasks.clear()
         dayItems.clear()
         addHeaders()
-        addDays()
+        addDays(today)
         preselectDay()
         loadScheduledOnDayTasks()
         LastAdapter(dayItems, BR.item)
@@ -95,13 +104,13 @@ class ScheduleViewModel : BaseViewModel() {
     fun getBigCalendar() {
         dayItems.clear()
         addHeaders()
-        addDays()
+        addDays(dayOfCurrentMonth)
     }
 
     fun getSmallCalendar() {
         dayItems.clear()
         addHeaders()
-        today.calendarWeekInterval.days().forEach {
+        dayOfCurrentMonth.calendarWeekInterval.days().forEach {
             val item = DayItem(it.dayOfMonth, checkHasTask(it), isThisMonth = it.monthOfYear == today.monthOfYear)
             dayItems += item
         }
@@ -112,7 +121,7 @@ class ScheduleViewModel : BaseViewModel() {
     }
 
     private fun preselectDay() = dayItems.forEach {
-        if (it is DayItem && it.number == today.dayOfMonth) {
+        if (it is DayItem && it.number == today.dayOfYear) {
             selection = it
         }
     }
@@ -125,9 +134,14 @@ class ScheduleViewModel : BaseViewModel() {
         placeholderVisibility = scheduledTasks.isEmpty()
     }
 
-    private fun addDays() {
-        firstDayOfMonth.calendarMonthInterval.days().forEach {
-            val item = DayItem(it.dayOfMonth, checkHasTask(it), isThisMonth = it.monthOfYear == today.monthOfYear)
+    private fun getFirstDayOfMonth(day: DateTime): DateTime {
+        dayOfCurrentMonth = day.minusDays(day.dayOfMonth - 1)
+        return dayOfCurrentMonth
+    }
+
+    private fun addDays(day: DateTime) {
+        getFirstDayOfMonth(day).calendarMonthInterval.days().forEach {
+            val item = DayItem(it.dayOfMonth, checkHasTask(it), isThisMonth = it.monthOfYear == day.monthOfYear)
             dayItems += item
         }
     }
@@ -147,5 +161,17 @@ class ScheduleViewModel : BaseViewModel() {
 
     private fun openTack() {
 
+    }
+
+    fun nextMonth() {
+        dayItems.clear()
+        addHeaders()
+        addDays(dayOfCurrentMonth.plusMonths(1))
+    }
+
+    fun previousMonth() {
+        dayItems.clear()
+        addHeaders()
+        addDays(dayOfCurrentMonth.minusMonths(1))
     }
 }
