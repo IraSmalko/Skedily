@@ -14,5 +14,7 @@
 
     <color name="white">#FFF</color>
     <color name="grey">#EEEEEE</color>
-    <color name="darkGreey">#757575</color>
+    <color name="darkGrey">#757575</color>
+    <color name="grey400">#BDBDBD</color>
+    <color name="defaultBackground">#FAFAFA</color>
 </resources>

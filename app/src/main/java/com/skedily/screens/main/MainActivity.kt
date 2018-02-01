@@ -7,16 +7,23 @@ import com.skedily.R
 import com.skedily.base.BaseBoundVmActivity
 import com.skedily.databinding.ActivityMainBinding
 import com.skedily.screens.authentication.LoggedInActivity
+import com.skedily.screens.dashboard.DashboardFragment
 import com.skedily.screens.family.FamilyFragment
 import com.skedily.screens.schedule.ScheduleFragment
 import com.skedily.utils.addFragmentToActivity
-import com.skedily.utils.replaceFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by smalk on 11/26/2017.
  */
 class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
         R.layout.activity_main, MainViewModel::class), MainInteractor {
+
+    private val fragments = mapOf(
+            State.DASHBOARD to DashboardFragment(),
+            State.SCHEDULE to ScheduleFragment(),
+            State.FAMILY to FamilyFragment()
+    )
 
     public override fun onStart() {
         super.onStart()
@@ -28,20 +35,17 @@ class MainActivity : BaseBoundVmActivity<ActivityMainBinding, MainViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragmentToActivity(supportFragmentManager, ScheduleFragment(), R.id.container)
+        addFragmentToActivity(supportFragmentManager, DashboardFragment(), R.id.container)
         vm.interactor = this
 
+        bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
+            vm.state = State.values().first { it.menuId == menuItem.itemId }
+            true
+        }
     }
 
-    override fun onClickDashboard() {
-        replaceFragment(supportFragmentManager, ScheduleFragment(), R.id.container)
+    override fun display(state: State?) {
+        fragments[state]!!.replaceAndCommit(R.id.container)
     }
 
-    override fun onClickSchedule() {
-
-    }
-
-    override fun onClickFamily() {
-        replaceFragment(supportFragmentManager, FamilyFragment(), R.id.container)
-    }
 }

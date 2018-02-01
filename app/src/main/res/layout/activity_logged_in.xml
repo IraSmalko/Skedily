@@ -11,36 +11,40 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/signButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:text="Sign In"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="172dp"
+            android:fontFamily="@font/satisfy_regular"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="44sp" />
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/signButton"
             android:layout_width="130dp"
             android:layout_height="35dp"
-            android:layout_centerInParent="true"
-            android:visibility="visible" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick='@{() -> vm.signOut()}'
-            android:text="Log Out!"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="100dp" />
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="40dp"-->
+        <!--android:clickable="true"-->
+        <!--android:focusable="true"-->
+        <!--android:onClick='@{() -> vm.signOut()}'-->
+        <!--android:text="Log Out!"-->
+        <!--android:textSize="30sp"-->
+        <!--android:textStyle="bold" />-->
 
     </RelativeLayout>
 </layout>

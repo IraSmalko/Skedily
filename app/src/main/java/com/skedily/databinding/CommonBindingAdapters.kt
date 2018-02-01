@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.skedily.R
+import com.skedily.model.User
 
 
 @BindingAdapter("loadCircleIcon")
@@ -62,6 +63,58 @@ fun scrollTop(recycler: RecyclerView, position: Int) {
 @BindingAdapter("setHeight")
 fun setHeight(layout: ViewGroup, height: Int) {
     layout.layoutParams.height = height
+}
+
+@BindingAdapter("setUserDots", "numberOfDot")
+fun setUserDots(v: View, userList: List<User>, numberOfDot: Int) {
+    when (userList.size) {
+        1 -> {
+            if (numberOfDot == 2) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList.first().color)
+                v.background = indicator
+            }
+        }
+        2 -> {
+            if (numberOfDot == 1) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList.first().color)
+                v.background = indicator
+            }
+            if (numberOfDot == 2) {
+                v.visibility = View.GONE
+            }
+            if (numberOfDot == 3) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList[1].color)
+                v.background = indicator
+            }
+        }
+        3 -> {
+            if (numberOfDot == 1) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList.first().color)
+                v.background = indicator
+            }
+            if (numberOfDot == 2) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList[1].color)
+                v.background = indicator
+            }
+            if (numberOfDot == 3) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(userList[2].color)
+                v.background = indicator
+            }
+        }
+        else -> {
+            if (userList.size > 3 && numberOfDot == 2) {
+                val indicator = ContextCompat.getDrawable(v.context, R.drawable.circle_indicator)
+                indicator?.setTint(ContextCompat.getColor(v.context, R.color.darkGrey))
+                v.background = indicator
+            }
+        }
+    }
 }
 
 interface Function {
