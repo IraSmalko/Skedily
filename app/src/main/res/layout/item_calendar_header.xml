@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.skedily.model.CalendarHeader" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{item.readableName}'
+            android:textAllCaps="true"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textColor='@{item.dayOff ? @color/colorAccent : @color/black}'
+            tools:text="MON"/>
+
+    </FrameLayout>
+
+</layout>

@@ -15,34 +15,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:loadCircleIcon='@{item.iconUrl}'
-            tools:src="@drawable/ic_launcher_background" />
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp">
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:loadCircleIcon='@{item.iconUrl}'
+                tools:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp"
                 android:text='@{item.name}'
                 android:textSize="16sp"
                 tools:text="Name" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility='@{item.name != null  ? View.VISIBLE : View.GONE}'
-                tools:text="location" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
     </LinearLayout>
 </layout>
