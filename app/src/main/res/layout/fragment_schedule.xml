@@ -35,9 +35,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:padding="8dp"
-                    android:text="September 2017"
+                    android:text='@{vm.monthHeader}'
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:text="September 2017"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -45,14 +46,14 @@
                     android:layout_weight="1">
 
                     <ImageButton
-                        android:layout_width="32dp"
+                        android:layout_width="42dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="4dp"
                         android:background="@drawable/circle_button"
                         android:src="@drawable/right_arrow" />
 
                     <ImageButton
-                        android:layout_width="32dp"
+                        android:layout_width="42dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/circle_button"
                         android:src="@drawable/left_arrow" />

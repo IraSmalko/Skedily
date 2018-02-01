@@ -38,6 +38,10 @@ class ScheduleViewModel : BaseViewModel() {
 
     var firstDayOfMonth = today.minusDays(today.dayOfMonth - 1)
 
+    val monthHeader: String
+        @Bindable get () = "${today.monthOfYear().asText} ${today.year().asText}"
+
+
     var selection = DayItem(today.dayOfMonth)
         @Bindable get
         private set(value) {
