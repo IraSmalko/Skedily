@@ -3,6 +3,7 @@ package com.skedily.utils
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import com.skedily.screens.dashboard.DashboardFragment
 import org.joda.time.DateTime
 import org.joda.time.Interval
 import org.joda.time.Period
@@ -11,7 +12,7 @@ import org.joda.time.ReadableInterval
 /**
  * Created by smalk on 11/26/2017.
  */
-fun addFragmentToActivity(manager: FragmentManager, fragment: Fragment, containerId: Int) {
+fun addFragmentToActivity(manager: FragmentManager, fragment: DashboardFragment, containerId: Int) {
     val transaction = manager.beginTransaction()
     transaction.add(containerId, fragment)
     transaction.commit()

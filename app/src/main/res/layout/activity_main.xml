@@ -17,7 +17,8 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="56dp" />
+            android:layout_marginBottom="56dp"
+            android:layout_marginTop="56dp" />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomNavigation"
@@ -28,6 +29,8 @@
             app:itemIconTint="@color/bottom_nav_item_tint"
             app:itemTextColor="@color/bottom_nav_item_tint"
             app:menu="@menu/main" />
+
+        <include layout="@layout/toolbar_view" />
 
     </RelativeLayout>
 </layout>
