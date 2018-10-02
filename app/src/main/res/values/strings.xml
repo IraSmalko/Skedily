@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Skedily</string>
+    <string name="google_android_map_api_key">AIzaSyBWtEzi9sjAtpezIBhvIu_eY8eADf_Jg1s</string>
+    <string name="google_place_api_key">AIzaSyDvLkX7RN5qHoFXTYkbEbJCb8k5wZFpis8</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="schedule">Schedule</string>
+    <string name="family">Family</string>
+    <string name="authentication_failed">Authentication failed.</string>
+    <string name="lgging_out">Logging Out...</string>
+    <string name="action">Action</string>
+    <string name="add_note">Add note</string>
+    <string name="add_checklist">Add checklist</string>
+    <string name="save">save</string>
+    <string name="category">Category</string>
+    <string name="no_tasks">No tasks</string>
 </resources>

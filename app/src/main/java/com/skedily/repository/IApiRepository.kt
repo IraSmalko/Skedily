@@ -1,3 +1,10 @@
 package com.skedily.repository
 
-interface IApiRepository
+import com.skedily.model.Task
+
+interface IApiRepository {
+
+    fun createGroup(name:String)
+    fun saveTask(task: Task)
+
+}

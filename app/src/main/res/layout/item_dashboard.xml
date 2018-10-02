@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.skedily.model.Task" />
+
+        <variable
+            name="vm"
+            type="com.skedily.screens.dashboard.DashboardViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/currentDate"
+        android:background='@{item.color}'
+        tools:background="#42A5F5">
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="7dp"
+            android:layout_toEndOf="@+id/currentDate"
+            android:foreground="@color/white" />
+
+        <TextView
+            android:id="@+id/currentDate"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:maxLines="2"
+            android:paddingLeft="16dp"
+            android:paddingRight="8dp"
+            android:text='@{item.startTime.toString("dd") + "\n" +item.startTime.toString("EEE")}'
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:text="18 \n Tue" />
+
+        <ImageView
+            android:id="@+id/circle"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="56dp"
+            android:src="@drawable/circle" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/circle"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text='@{item.note}'
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Name of name and name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{item.startTime.toString("HH:mm") + " - "  + item.endTime.toString("HH:mm")}'
+                android:textColor="@color/white"
+                tools:text="7 - 8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="4dp"
+                android:onClick="@{() -> vm.onClickLocation(item.address)}"
+                android:textColor="@color/white"
+                android:visibility='@{item.address != null ? View.VISIBLE : View.GONE}'
+                tools:text="location" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/userPhoto"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_launcher_background"
+            app:loadCircleIcon='@{item.photo}' />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.skedily.model.DayItem" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:backgroundTint='@{item.selected ? @color/grey : @color/defaultBackground }'
+        android:background="@drawable/circle_day_background">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor='@{item.isThisMonth ? @color/black : @color/grey400}'
+            android:text='@{String.valueOf(item.number)}'
+            tools:text="12"
+            tools:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-6dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginRight="2dp"
+                app:numberOfDot='@{1}'
+                app:setUserDots='@{item.userList}'
+                tools:background="@drawable/circle_indicator"
+                tools:backgroundTint="@color/colorAccent" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginRight="2dp"
+                app:numberOfDot='@{2}'
+                app:setUserDots='@{item.userList}'
+                tools:background="@drawable/circle_indicator"
+                tools:backgroundTint="@color/colorAccent" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                app:numberOfDot='@{3}'
+                app:setUserDots='@{item.userList}'
+                tools:background="@drawable/circle_indicator"
+                tools:backgroundTint="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

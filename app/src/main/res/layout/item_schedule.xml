@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.skedily.model.Task" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background='@{item.color}'
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_margin="4dp"
+        android:weightSum="10"
+        tools:background="#42A5F5">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text='@{item.note}'
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Name of name and name name and name name and name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text='@{item.startTime.toString("HH:mm") + " - "  + item.endTime.toString("HH:mm")}'
+                android:textColor="@color/white"
+                tools:text="7 - 8" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/userPhoto"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher_background"
+            app:loadCircleIcon='@{item.photo}' />
+
+
+    </LinearLayout>
+</layout>
