@@ -11,9 +11,7 @@ import com.skedily.R
 import com.skedily.base.BaseViewModel
 import com.skedily.databinding.ItemChecklistBinding
 import com.skedily.model.ChecklistItem
-import com.skedily.model.Task
 import com.skedily.model.User
-import com.skedily.utils.ApiRepository
 import com.skedily.utils.weak
 import org.joda.time.DateTime
 
@@ -95,6 +93,6 @@ class AddCardViewModel : BaseViewModel() {
     }
 
     fun clickSave() {
-        ApiRepository.saveTask(Task(1, note, category, pickedPlace?.latLng, startDay, startDay, listPerson, checklistItems))
+//        ApiRepository.saveTask(Task(1, note, category, pickedPlace?.latLng, startDay, startDay, listPerson, checklistItems))
     }
 }

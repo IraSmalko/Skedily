@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".screens.authentication.LoggedInActivity" />
+        <!--<activity android:name=".screens.authentication.LoggedInActivity" />-->
         <activity android:name=".screens.add_card.AddCardActivity"
             android:windowSoftInputMode="stateHidden"/>
 

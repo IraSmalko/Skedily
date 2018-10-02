@@ -75,8 +75,9 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:3.0.1'
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
-    implementation "com.google.firebase:firebase-database:$firebase_version"
-    implementation "com.google.firebase:firebase-auth:$firebase_version"
+//    implementation "com.google.firebase:firebase-database:16.0.2"
+//    implementation "com.google.firebase:firebase-auth:16.0.3"
+    implementation "com.google.firebase:firebase-config:16.0.0"
 
     implementation "com.google.android.gms:play-services-auth:$playServicesVersion"
     implementation "com.google.android.gms:play-services-maps:$playServicesVersion"

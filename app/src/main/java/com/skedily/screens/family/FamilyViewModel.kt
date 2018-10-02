@@ -29,4 +29,8 @@ class FamilyViewModel : BaseViewModel() {
     fun addPerson() {
 
     }
+
+    fun onClick(){
+
+    }
 }
